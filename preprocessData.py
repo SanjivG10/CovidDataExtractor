@@ -4,10 +4,10 @@ import pandas as pd
 
 
 def changeToInt(val):
-    val = val.strip()
-    val = val.replace(',','')
-    val = val.replace('+','')
     if val:
+        val = str(val).strip()
+        val = val.replace(',','')
+        val = val.replace('+','')
         return int(val)
     else:
         return 0

@@ -10,7 +10,6 @@ with urlopen(req) as response:
 
 soup = BeautifulSoup(html_doc, 'html.parser')
 
-countriesData = []
 countDict = {
     0: "country", 
     1: "total cases", 
@@ -23,6 +22,7 @@ countDict = {
 }
 
 def getDataCountryWise():
+    countriesData = []
     elements = soup.find_all('tr',class_='')
     elements = elements[:len(elements)//2]
     for element in elements:

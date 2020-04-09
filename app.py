@@ -26,7 +26,8 @@ def home():
 def postDataFromHere():
     current_time_we_have = int(time.time())
     data = {}
-    data[str(current_time_we_have)] = getDataCountryWise()
+    values = getDataCountryWise()
+    data[str(current_time_we_have)] = values
     mongo.db.covid19.insert_one(data)
     return 'success'
 
