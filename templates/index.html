@@ -12,13 +12,13 @@
 
         <div class="dropdown dropdownStyle">
 
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="btn btn-secondary dropdown-toggle dropDownSelector" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Sort By 
             </a>
           
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 {% for eachColumn in column_names %}
-                    <a class="dropdown-item" href="/#{{eachColumn}}">{{eachColumn|title}}</a>
+                    <a class="dropdown-item titleNames" href="#">{{eachColumn|title}}</a>
                 {% endfor %}
             </div>
           </div>
@@ -34,11 +34,11 @@
               </tr>
             </thead>
 
-            <tbody>
+            <tbody class="tableBodyHolder">
                 {% for eachRow in data %}
-                <tr>
+                <tr class="tableRowHolder">
                     {% for key,eachColumn in eachRow.items() %}
-                    <td>{{eachColumn}}</td>
+                        <td class="tableDataHolder">{{eachColumn}}</td>
                     {% endfor %}
                 </tr>
                 {% endfor %}
@@ -54,7 +54,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
-        const data = '{{data}}'
+        const data = {{data|tojson}}
     </script>
     <script src="{{url_for('static',filename='js/myJS.js')}}" ></script>
 

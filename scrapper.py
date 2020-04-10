@@ -31,11 +31,11 @@ def getDataCountryWise():
         for eachColumn in element.find_all('td'):
             if count<len(countDict.keys()):
                 if eachColumn.find('a'):
-                    countryName = eachColumn.find('a').get_text()
+                    countryName = eachColumn.find('a').get_text().strip()
                     data[countDict[count]] = countryName
                 else:
                     title = countDict[count]
-                    data[title] = eachColumn.get_text()
+                    data[title] = eachColumn.get_text().strip()
                 count+=1
         countriesData.append(data)
     return countriesData
